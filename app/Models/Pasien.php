@@ -9,10 +9,13 @@ class Pasien extends Model
 {
     use HasFactory;
 
+    protected $table = 'pasiens';
+
     protected $fillable = [
+        'nim',
         'nama',
         'tanggal_lahir',
-        'alamat',
-        'nomor_telepon',
+        'no_telepon',
+        'jenis_kelamin',
     ];
 }
