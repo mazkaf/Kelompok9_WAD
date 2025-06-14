@@ -24,6 +24,9 @@
         <label for="nama">Nama</label>
         <input type="text" name="nama" id="nama" value="{{ $pasien->nama }}" required maxlength="255" placeholder="Masukkan nama pasien" />
 
+        <label for="tanggal_lahir">Tanggal Lahir</label>
+        <input type="date" name="tanggal_lahir" id="tanggal_lahir" value="{{ $pasien->tanggal_lahir->format('Y-m-d') }}" required />
+
         <label for="no_telepon">No. Telepon</label>
         <input type="text" name="no_telepon" id="no_telepon" value="{{ $pasien->no_telepon }}" required maxlength="20" placeholder="Masukkan nomor telepon" />
 
