@@ -25,3 +25,4 @@ class Pasien extends Model
         return $this->belongsTo(Dokter::class);
     }
 }
+

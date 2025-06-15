@@ -3,10 +3,12 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PasienController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\DokterController;
 
 Route::get('/', [PasienController::class, 'index'])->name('home');
 
 Route::resource('pasien', PasienController::class);
+Route::resource('dokter', DokterController::class);
 
 //User
 Route::get('/users', [UserController::class, 'index'])->name('users.index');

@@ -8,20 +8,17 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
-    // Tampilkan semua user
     public function index()
     {
         $users = User::all();
-        return response()->json($users);
+        return view('users.index', compact('users'));
     }
 
-    // Tampilkan form tambah user (jika pakai view)
     public function create()
     {
         return view('users.create');
     }
 
-    // Simpan user baru ke database
     public function store(Request $request)
     {
         $validated = $request->validate([
@@ -36,24 +33,21 @@ class UserController extends Controller
             'password' => Hash::make($validated['password']),
         ]);
 
-        return response()->json(['message' => 'User created successfully', 'user' => $user], 201);
+        return redirect()->route('users.index')->with('success', 'User  created successfully');
     }
 
-    // Tampilkan satu user berdasarkan ID
     public function show($id)
     {
         $user = User::findOrFail($id);
-        return response()->json($user);
+        return view('users.show', compact('user'));
     }
 
-    // Tampilkan form edit user (jika pakai view)
     public function edit($id)
     {
         $user = User::findOrFail($id);
         return view('users.edit', compact('user'));
     }
 
-    // Update data user berdasarkan ID
     public function update(Request $request, $id)
     {
         $user = User::findOrFail($id);
@@ -71,16 +65,13 @@ class UserController extends Controller
         }
 
         $user->update($validated);
-
-        return response()->json(['message' => 'User updated successfully', 'user' => $user]);
+        return redirect()->route('users.index')->with('success', 'User  updated successfully');
     }
 
-    // Hapus user berdasarkan ID
     public function destroy($id)
     {
         $user = User::findOrFail($id);
         $user->delete();
-
-        return response()->json(['message' => 'User deleted successfully']);
+        return redirect()->route('users.index')->with('success', 'User  deleted successfully');
     }
 }
