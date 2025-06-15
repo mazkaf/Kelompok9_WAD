@@ -6,8 +6,6 @@ use App\Http\Controllers\UserController;
 
 Route::resource('pasien', PasienController::class);
 
-
-
 //User
 Route::get('/users', [UserController::class, 'index'])->name('users.index');
 Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
